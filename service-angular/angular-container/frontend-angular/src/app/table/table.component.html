@@ -1,0 +1,52 @@
+<h1>Tabella Dati</h1>
+
+
+<button (click)="show()">Form</button>
+<div *ngIf="showForm">
+    <label>Data di nascita: </label>
+    <input type="date" [(ngModel)]="newDipendente.birthDate">
+    <br>
+    <label>Nome: </label>
+    <input type="text" [(ngModel)]="newDipendente.firstName">
+    <br>
+    <label>Genere: </label>
+    <input type="text" [(ngModel)]="newDipendente.gender">
+    <br>
+    <label>Data di assunzione: </label>
+    <input type="date" [(ngModel)]="newDipendente.hireDate">
+    <br>
+    <label>Cognome: </label>
+    <input type="text" [(ngModel)]="newDipendente.lastName">
+    <br>
+    <button (click)="insertItem()">Aggiungi</button>
+</div>
+<br>
+<br>
+
+<table *ngIf="data">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Cognome</th>
+            <th>Azioni</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of data._embedded.employees">
+            <td>{{ item.id }}</td>
+            <td>{{ item.firstName }}</td>
+            <td>{{ item.lastName }}</td>
+            <td>
+                <button (click)='deleteItem(item.id)'>Cancella</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<app-pagination  [currentPage]="currentPage"
+(prevPage)="loadPreviousPage()"
+(nextPage)="loadNextPage()"
+(firstPage)="loadFirstPage()"
+(lastPage)="loadLastPage()">
+</app-pagination>

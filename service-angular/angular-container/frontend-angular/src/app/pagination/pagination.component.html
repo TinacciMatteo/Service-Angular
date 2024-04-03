@@ -1,0 +1,7 @@
+<div id="pagination">
+    <button (click)="firstPage.emit()">Prima Pagina</button>
+    <button (click)="prevPage.emit()">Pagina Precedente</button>
+    <span>{{ currentPage }}</span>
+    <button (click)="nextPage.emit()">Pagina Successiva</button>
+    <button (click)="lastPage.emit()">Ultima Pagina</button>
+  </div>
